@@ -47,7 +47,7 @@
         <a href="#conteudos" class="px-3 py-2 rounded-full hover:bg-black/5 font-medium">Conteúdos</a>
         <a href="#prova" class="px-3 py-2 rounded-full hover:bg-black/5 font-medium">Prova</a>
         <a href="#faq" class="px-3 py-2 rounded-full hover:bg-black/5 font-medium">FAQ</a>
-        <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-black text-white hover:bg-slate-900">Comprar</a>
+        <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-black text-white hover:bg-slate-800">Comprar</a>
       </nav>
 
       <button id="btn-open" class="md:hidden p-2 rounded-full border" aria-label="Abrir menu">
@@ -68,7 +68,7 @@
           <a href="#conteudos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 font-medium">Conteúdos</a>
           <a href="#prova" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 font-medium">Prova</a>
           <a href="#faq" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 font-medium">FAQ</a>
-          <a href="#oferta" class="drawer__link w-full mt-2 inline-flex items-center justify-center rounded-full font-semibold transition px-5 py-3 bg-black text-white hover:bg-slate-900">Comprar</a>
+          <a href="#oferta" class="drawer__link w-full mt-2 inline-flex items-center justify-center rounded-full font-semibold transition px-5 py-3 bg-black text-white hover:bg-slate-800">Comprar</a>
         </nav>
       </div>
     </div>
@@ -76,52 +76,31 @@
 
   <main>
     <!-- HERO -->
-    <section id="inicio" class="bg-[#FAF8F5] py-14 sm:py-20">
-      <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-12 gap-10 items-start">
-        <div class="lg:col-span-6">
+    <section id="inicio" class="bg-[#FAF8F5] py-20 sm:py-28">
+      <div class="max-w-4xl mx-auto px-5 text-center">
+        <div>
           <p class="uppercase tracking-[.14em] text-xs text-black/60 font-semibold">edição especial</p>
           <h1 class="mt-2 text-4xl sm:text-6xl font-black leading-tight text-black">
             Desvende o enigma de <u class="hero__highlight italic">Tim Maia Racional</u>
           </h1>
-          <p class="mt-5 text-black/70 text-lg max-w-prose">
+          <p class="mt-5 text-black/70 text-lg max-w-prose mx-auto">
             Um guia elegante e definitivo que decifra a filosofia, a história e os segredos da Cultura Racional — sem jargões, sem ruído.
           </p>
-          <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-900" data-js="price-cta">Comprar agora</a>
-            <a href="#historia" class="inline-flex items-center justify-center rounded-full font-semibold transition px-6 py-3.5 text-lg border-2 border-black text-black hover:bg-black hover:text-white">Explorar primeiro</a>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-800" data-js="price-cta">Comprar agora</a>
+            <a href="#historia" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg border-2 border-black text-black hover:bg-black hover:text-white">Explorar primeiro</a>
           </div>
-          <div class="mt-6 grid grid-cols-3 gap-4 text-sm text-black/80">
-            <div class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M12 2L2 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" opacity=".3"/><path d="M12 22c5.16-1.26 9-6.45 9-12V7l-9-5-9 5v5c0 5.55 3.84 10.74 9 12zM12 4.43L18 7v3c0 4.54-3.2 8.79-6 10-2.8-1.21-6-5.46-6-10V7l6-2.57z"/></svg>Compra segura</div>
-            <div class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="stroke-current text-slate-500"><circle cx="12" cy="13" r="8" stroke-width="1.5" fill="none"/><path d="M12 13V8M9 3h6" stroke-width="1.5" stroke-linecap="round"/></svg>Acesso imediato</div>
-            <div class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z" opacity=".3"/><path d="M14 2v6h6L14 2zM6 20V4h7v5h5v11H6z"/></svg>PDF premium</div>
+          <div class="mt-8 grid grid-cols-3 gap-4 text-sm text-black/80 max-w-md mx-auto">
+            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M12 2L2 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" opacity=".3"/><path d="M12 22c5.16-1.26 9-6.45 9-12V7l-9-5-9 5v5c0 5.55 3.84 10.74 9 12zM12 4.43L18 7v3c0 4.54-3.2 8.79-6 10-2.8-1.21-6-5.46-6-10V7l6-2.57z"/></svg>Compra segura</div>
+            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="stroke-current text-slate-500"><circle cx="12" cy="13" r="8" stroke-width="1.5" fill="none"/><path d="M12 13V8M9 3h6" stroke-width="1.5" stroke-linecap="round"/></svg>Acesso imediato</div>
+            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z" opacity=".3"/><path d="M14 2v6h6L14 2zM6 20V4h7v5h5v11H6z"/></svg>PDF premium</div>
           </div>
-        </div>
-
-        <div class="lg:col-span-6">
-            <div class="grid grid-cols-12 gap-5">
-              <figure class="col-span-7 rounded-[2rem] overflow-hidden relative aspect-[4/5] shadow-lg">
-                <img id="imgA" alt="Tim Maia (fase Racional) — retrato" class="absolute inset-0 w-full h-full object-cover bg-slate-200" />
-              </figure>
-              <figure class="col-span-5 rounded-[2rem] overflow-hidden relative aspect-[3/5] shadow-lg">
-                <img id="imgB" alt="Tim Maia no palco, anos 70" class="absolute inset-0 w-full h-full object-cover bg-slate-200" />
-              </figure>
-              <div class="col-span-12">
-                <div class="rounded-[2rem] border bg-white p-6 shadow-sm">
-                  <div class="flex items-center gap-3 mb-2">
-                    <div class="h-8 px-3 rounded-md bg-[#0046AD] text-white grid place-items-center"><span class="font-black tracking-wider text-xs">O GLOBO</span></div>
-                    <span class="text-sm text-black/60">Obra composta durante a fase Universo em Desencanto</span>
-                  </div>
-                  <p class="font-black text-xl leading-snug font-serif">‘Racional’, álbum renegado por Tim Maia, finalmente chega ao streaming</p>
-                </div>
-              </div>
-            </div>
         </div>
       </div>
     </section>
 
     <!-- PROBLEMA / STORYLINE -->
     <section id="historia" class="py-16 md:py-20">
-      <!-- ALTERAÇÃO: Ajustado o espaçamento (gap) para melhor responsividade -->
       <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-y-12 md:gap-x-16 items-start">
         <div>
           <p class="uppercase tracking-[.14em] text-xs text-black/60 font-semibold">o problema</p>
@@ -163,7 +142,6 @@
           <h2 class="text-3xl sm:text-5xl font-black">Dentro do eBook</h2>
           <p class="mt-2 text-black/70">Uma seleção enxuta do que você realmente precisa para entender a fase Racional.</p>
         </div>
-        <!-- ALTERAÇÃO: Aumentado o espaçamento (gap) entre os itens -->
         <div class="mt-10 grid lg:grid-cols-2 gap-4">
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>01. Cronologia completa (1935–2025)</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">As datas-chave da Cultura Racional e da fase Racional de Tim Maia, de forma direta e confiável.</p></details>
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>02. Análise dos álbuns “Racional Vol. 1 & 2”</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">O que torna essas obras únicas: letras, arranjos, vocais e o contexto por trás.</p></details>
@@ -175,7 +153,7 @@
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>08. Guia de escuta comentado</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">Faixa a faixa com sugestões de percepção e contexto histórico.</p></details>
         </div>
         <div class="text-center mt-8">
-          <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-900" data-js="price-cta">Quero desvendar</a>
+          <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-800" data-js="price-cta">Quero desvendar</a>
         </div>
       </div>
     </section>
@@ -225,12 +203,13 @@
                 </ul>
               </div>
               <div class="flex flex-col gap-4">
-                <a class="inline-flex items-center justify-center rounded-full font-semibold transition px-6 py-3.5 text-lg bg-emerald-600 text-white hover:bg-emerald-500 w-full" data-js="checkout-cta">Comprar agora</a>
-                <div class="flex items-center gap-3">
-                  <div class="h-7 px-3 rounded bg-white text-[#1A1F71] grid place-items-center border border-white/20"><span class="font-black tracking-wider text-sm">VISA</span></div>
-                  <div class="h-7 px-2.5 rounded bg-white grid place-items-center border border-white/20"><div class="flex items-center"><span class="inline-block w-3.5 h-3.5 rounded-full bg-[#EA001B]"></span><span class="-ml-1.5 inline-block w-3.5 h-3.5 rounded-full bg-[#FF9900]"></span></div></div>
-                  <div class="h-7 px-2.5 rounded bg-white grid place-items-center border border-white/20"><svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-label="Pix" class="text-[#32BCAD]"><path d="M7 7L10 4L13 7L10 10L7 7Z" fill="currentColor"/><rect x="1" y="1" width="20" height="12" rx="6" stroke="currentColor"/></svg></div>
-                  <div class="h-7 px-2.5 rounded bg-white grid place-items-center border border-white/20"><svg width="26" height="12" viewBox="0 0 26 12" aria-label="Boleto"><rect width="26" height="12" rx="2" fill="#fff"/><g stroke="#111" stroke-width="1"><path d="M3 2v8M6 2v8M8 2v8M11 2v8M13 2v8M16 2v8M19 2v8M21 2v8"/></g></svg></div>
+                <a class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-emerald-600 text-white hover:bg-emerald-500 w-full" data-js="checkout-cta">Comprar agora</a>
+                <!-- ALTERAÇÃO: Logos oficiais com tamanho padronizado -->
+                <div class="flex items-center justify-center gap-3 bg-white/10 p-2 rounded-xl">
+                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png" alt="Logo Visa" class="max-h-full max-w-full object-contain" /></div>
+                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_hrz_pos_300px_2x.png" alt="Logo Mastercard" class="max-h-full max-w-full object-contain" /></div>
+                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://nac.cni.com.br/blog/wp-content/uploads/2021/04/pix-1.jpeg" alt="Logo Pix" class="max-h-full max-w-full object-contain rounded-sm" /></div>
+                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://logodownload.org/wp-content/uploads/2019/09/boleto-logo.png" alt="Logo Boleto" class="max-h-full max-w-full object-contain" /></div>
                 </div>
                 <div class="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-4 text-emerald-100"><div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 mt-0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5" fill="none"/></svg><div><p class="font-bold">Garantia de Satisfação</p><p class="text-emerald-100/90 text-sm">7 dias para testar. Reembolso total se não curtir.</p></div></div></div>
               </div>
@@ -251,7 +230,6 @@
           <p class="uppercase tracking-[.14em] text-xs text-black/60 font-semibold">dúvidas frequentes</p>
           <h2 class="text-3xl sm:text-5xl font-black">FAQ — antes de comprar</h2>
         </div>
-        <!-- ALTERAÇÃO: Aumentado o espaçamento (gap) entre os itens -->
         <div class="mt-10 grid lg:grid-cols-2 gap-4">
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Vale se eu já li o livro?</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">Sim. O eBook organiza a cronologia, traduz termos e conecta a história com a discografia, evitando a linguagem repetitiva do original.</p></details>
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Quanto tempo levo para ler?</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">Em torno de 60–90 minutos na primeira leitura.</p></details>
@@ -261,14 +239,14 @@
           <details class="rounded-2xl border p-4 group open:bg-black/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Recebo na hora?</span><b class="text-sm text-black/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70">Sim. Acesso imediato via e-mail após confirmação.</p></details>
         </div>
         <div class="text-center mt-8">
-          <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-900" data-js="price-cta">Comprar agora</a>
+          <a href="#oferta" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-black text-white hover:bg-slate-800" data-js="price-cta">Comprar agora</a>
         </div>
       </div>
     </section>
   </main>
   
   <footer class="bg-[#FAF8F5] border-t border-black/5 pt-10">
-      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-8">
+      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-8">
           <div>
               <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
                   <span class="grid place-items-center w-8 h-8 rounded-full bg-black text-white font-black text-sm">TM</span>
@@ -282,18 +260,11 @@
                   <li><a href="#termos" class="underline">Termos de Uso</a> • <a href="#privacidade" class="underline">Política de Privacidade</a></li>
               </ul>
           </div>
-          <nav class="space-y-2">
+          <nav class="space-y-2 md:justify-self-end">
               <a href="#prova" class="block hover:underline">Depoimentos</a>
               <a href="#valor" class="block hover:underline">O que você leva</a>
               <a href="#oferta" class="block hover:underline">Comprar</a>
           </nav>
-          <form onsubmit="return false">
-              <label for="email" class="text-sm text-black/70">Receba novidades</label>
-              <div class="mt-2 flex gap-2">
-                  <input id="email" type="email" placeholder="seu@email.com" class="flex-grow bg-white border border-black/10 rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-black" />
-                  <button type="submit" class="inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm border-2 border-black text-black hover:bg-black hover:text-white">Assinar</button>
-              </div>
-          </form>
       </div>
       <p class="text-center text-black/60 py-8 text-sm">© <span id="year"></span> Tim Maia Místico. Todos os direitos reservados.</p>
   </footer>
@@ -315,14 +286,12 @@
     const PRICE_LABEL = "R$39,90";
 
     const TIM1_CANDIDATES = [
-      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1400&auto=format&fit=crop",
-      "https://picsum.photos/id/237/1200/1500"
+      "https://images.unsplash.com/photo-1598387993441-a364f551e7e0?q=80&w=1887&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
     ];
     const TIM2_CANDIDATES = [
-      "https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1400&auto=format&fit=crop",
-      "https://picsum.photos/id/1011/1200/800"
+      "https://images.unsplash.com/photo-1547321128-904c12154070?q=80&w=1887&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1586156959592-4a6547121773?q=80&w=1887&auto=format&fit=crop"
     ];
 
     /* ===== HELPERS ===== */
@@ -392,22 +361,25 @@
         const key = 'tm24';
         const now = Date.now();
         let start = Number(localStorage.getItem(`${key}_start`));
-        let target = Number(localStorage.getItem(`${key}_target`));
 
-        const valid = start && target && (now - start) < 24 * 3600 * 1000;
+        const valid = start && (now - start) < 24 * 3600 * 1000;
         if (!valid){
           start = Date.now();
-          target = Math.floor(70 + Math.random() * 80); // 70–150 vendas/24h
           localStorage.setItem(`${key}_start`, String(start));
-          localStorage.setItem(`${key}_target`, String(target));
         }
 
         const end = start + 24 * 3600 * 1000;
         const hhEl = $('#hh'), mmEl = $('#mm'), ssEl = $('#ss');
         const salesEl = $('#sales'), targetEl = $('#target');
         const barTime = $('#bar-time'), barSales = $('#bar-sales');
+        
+        // ALTERAÇÃO: Valores fixos para vendas e alvo
+        const target = 175;
+        const sales = 35;
 
         if(targetEl) targetEl.textContent = target;
+        if(salesEl) salesEl.textContent = sales;
+        if(barSales) barSales.style.width = `${(sales / target) * 100}%`;
 
         function tick(){
           const now = Date.now();
@@ -422,11 +394,7 @@
           if (mmEl) mmEl.textContent = m;
           if (ssEl) ssEl.textContent = s;
 
-          const sales = Math.floor(target * elapsed);
-          if (salesEl) salesEl.textContent = sales;
-
           if (barTime) barTime.style.width = `${(1 - elapsed) * 100}%`;
-          if (barSales) barSales.style.width = `${(sales / Math.max(1, target)) * 100}%`;
         }
 
         tick();
