@@ -45,6 +45,10 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Impede o scroll da página quando o modal está aberto */
+    body.modal-open {
+        overflow: hidden;
+    }
   </style>
 
   <!-- Script para evitar "flash" do tema incorreto ao carregar a página -->
@@ -86,6 +90,7 @@
         <a href="#historia" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
         <a href="#valor" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
         <a href="#conteudos" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
+        <a href="#bonus" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Bônus</a>
         <a href="#prova" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
         <a href="#blog" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
         <a href="#faq" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
@@ -116,6 +121,7 @@
           <a href="#historia" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
           <a href="#valor" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
           <a href="#conteudos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
+          <a href="#bonus" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Bônus</a>
           <a href="#prova" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
           <a href="#blog" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
           <a href="#faq" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
@@ -267,6 +273,28 @@
       </div>
     </section>
 
+    <!-- NOVA SEÇÃO: Bônus (Captura de E-mail) -->
+    <section id="bonus" class="py-16 md:py-20 bg-[#F6F7F6] dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="reveal">
+                    <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">Bônus Exclusivo</p>
+                    <h2 class="text-3xl sm:text-5xl font-black dark:text-white mt-2">Receba a Fonte Original</h2>
+                    <p class="mt-4 text-black/70 dark:text-slate-300 max-w-prose mx-auto">Para aprofundar seus estudos, cadastre-se e receba gratuitamente o livro <b class="dark:text-white">"Universo em Desencanto"</b>, a obra que inspirou a fase Racional de Tim Maia, em formato PDF.</p>
+                    
+                    <form id="bonus-form" class="mt-8 max-w-md mx-auto">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="text" id="bonus-name" placeholder="Seu nome" required class="w-full px-4 py-3 rounded-full border dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-center">
+                            <input type="email" id="bonus-email" placeholder="Seu melhor e-mail" required class="w-full px-4 py-3 rounded-full border dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-center">
+                        </div>
+                        <button type="submit" class="w-full mt-4 inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-emerald-600 text-white hover:bg-emerald-500">Receber Bônus Grátis</button>
+                    </form>
+                    <p id="bonus-feedback" class="mt-4 text-sm text-slate-600 dark:text-slate-400"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Seção de Prova Social -->
     <section id="prova" class="py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-5">
@@ -371,6 +399,21 @@
     </section>
   </main>
   
+  <!-- Modal de Políticas -->
+  <div id="policy-modal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col transform transition-transform duration-300 scale-95">
+          <header class="p-4 border-b dark:border-slate-700 flex items-center justify-between flex-shrink-0">
+              <h3 id="modal-title" class="text-lg font-bold"></h3>
+              <button id="modal-close-btn" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10" aria-label="Fechar">
+                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
+              </button>
+          </header>
+          <main id="modal-content" class="p-6 overflow-y-auto">
+              <!-- Conteúdo será inserido via JS -->
+          </main>
+      </div>
+  </div>
+
   <footer class="bg-[#FAF8F5] dark:bg-slate-950 border-t border-black/5 dark:border-white/5 pt-10">
       <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-8">
         <div>
@@ -395,7 +438,7 @@
             </a>
             <ul class="text-sm text-black/70 dark:text-slate-400 mt-4 space-y-2">
                 <li>Site protegido por SSL • Pagamento seguro</li>
-                <li><a href="#termos" class="underline">Termos de Uso</a> • <a href="#privacidade" class="underline">Política de Privacidade</a></li>
+                <li><a href="#" data-policy="terms" class="underline hover:text-emerald-600">Termos de Uso</a> • <a href="#" data-policy="privacy" class="underline hover:text-emerald-600">Política de Privacidade</a></li>
             </ul>
         </div>
         <nav class="space-y-2 md:justify-self-end">
@@ -647,6 +690,131 @@
         container.innerHTML = articlesHTML;
         // Re-inicializa o observer para os novos elementos
         initScrollReveal('#blog-articles-container .reveal');
+      })();
+
+      // LÓGICA DO MODAL DE POLÍTICAS
+      (function policyModal() {
+        const modal = $('#policy-modal');
+        if (!modal) return;
+
+        const modalContainer = modal.querySelector('div');
+        const closeBtn = $('#modal-close-btn');
+        const modalTitle = $('#modal-title');
+        const modalContent = $('#modal-content');
+        const links = document.querySelectorAll('[data-policy]');
+
+        const policies = {
+            terms: {
+                title: 'Termos de Uso',
+                content: `
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">1. Aceitação dos Termos</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">Ao adquirir e utilizar o eBook "Tim Maia Místico", você concorda em cumprir estes Termos de Uso. Se você não concordar com qualquer parte dos termos, não tem permissão para usar o eBook.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">2. Licença de Uso</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">Concedemos a você uma licença limitada, não exclusiva e intransferível para baixar, instalar e usar o eBook para seu uso pessoal e não comercial.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">3. Restrições</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">É estritamente proibido: a) compartilhar, revender ou distribuir o eBook; b) modificar, traduzir ou criar trabalhos derivados baseados no eBook; c) remover quaisquer avisos de propriedade ou etiquetas do eBook.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">4. Propriedade Intelectual</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Todo o conteúdo do eBook, incluindo textos, gráficos e layout, é de nossa propriedade exclusiva e protegido por leis de direitos autorais.</p>
+                `
+            },
+            privacy: {
+                title: 'Política de Privacidade',
+                content: `
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">1. Coleta de Dados</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">Coletamos informações pessoais, como nome e e-mail, durante o processo de compra através da plataforma Hotmart, que possui sua própria política de privacidade. Não armazenamos dados de pagamento.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">2. Uso de Dados</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">Utilizamos seu e-mail para enviar o eBook adquirido e para comunicações ocasionais sobre atualizações ou produtos relacionados. Você pode optar por não receber essas comunicações a qualquer momento.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">3. Cookies e localStorage</h4>
+                    <p class="mb-4 text-slate-600 dark:text-slate-400">Nosso site utiliza o localStorage do navegador para salvar suas preferências de tema (claro/escuro) e para gerenciar o contador de ofertas. Esses dados são armazenados localmente no seu dispositivo e não são usados para rastreamento.</p>
+                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">4. Compartilhamento de Dados</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Não compartilhamos suas informações pessoais com terceiros, exceto quando exigido por lei.</p>
+                `
+            }
+        };
+
+        const openModal = (type) => {
+            const policy = policies[type];
+            if (!policy) return;
+
+            modalTitle.textContent = policy.title;
+            modalContent.innerHTML = policy.content;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-open');
+            // Força um reflow para a animação funcionar
+            setTimeout(() => {
+              modal.classList.remove('opacity-0');
+              modalContainer.classList.remove('scale-95');
+            }, 10);
+        };
+
+        const closeModal = () => {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+              modal.classList.add('hidden');
+              modal.classList.remove('flex');
+              document.body.classList.remove('modal-open');
+            }, 300); // Duração da transição
+        };
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const policyType = e.target.dataset.policy;
+                openModal(policyType);
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === "Escape" && !modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      })();
+
+      // LÓGICA DO FORMULÁRIO DE BÔNUS
+      (function bonusFormHandler() {
+          const form = $('#bonus-form');
+          if (!form) return;
+
+          const feedbackEl = $('#bonus-feedback');
+          const submitBtn = form.querySelector('button[type="submit"]');
+
+          form.addEventListener('submit', (e) => {
+              e.preventDefault();
+              const name = $('#bonus-name').value;
+              const email = $('#bonus-email').value;
+
+              if (!name || !email) {
+                  feedbackEl.textContent = 'Por favor, preencha todos os campos.';
+                  feedbackEl.classList.add('text-red-500');
+                  return;
+              }
+
+              // Simples validação de e-mail
+              if (!/^\S+@\S+\.\S+$/.test(email)) {
+                  feedbackEl.textContent = 'Por favor, insira um e-mail válido.';
+                  feedbackEl.classList.add('text-red-500');
+                  return;
+              }
+
+              feedbackEl.textContent = `Obrigado, ${name}! Seu bônus será enviado para ${email} em breve.`;
+              feedbackEl.classList.remove('text-red-500');
+              feedbackEl.classList.add('text-emerald-600', 'dark:text-emerald-400');
+              
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Enviado!';
+              submitBtn.classList.add('bg-gray-500', 'hover:bg-gray-500');
+              form.reset();
+          });
       })();
 
       // Inicializa o scroll reveal para os elementos estáticos da página
