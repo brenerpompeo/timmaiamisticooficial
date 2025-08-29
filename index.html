@@ -6,10 +6,10 @@
   <title>Tim Maia Místico — Edição Especial</title>
   <meta name="description" content="Guia elegante e definitivo que decifra a Cultura Racional e a fase Racional de Tim Maia. +30 páginas em PDF premium, acesso imediato e garantia." />
   
-  <!-- ALTERAÇÃO: Adicionado o Favicon -->
-  <link rel="icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22black%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2268%22%20font-family%3D%22sans-serif%22%20font-size%3D%2250%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%3ETM%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <!-- LOGO: Favicon em SVG estilizado e moderno -->
+  <link rel="icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22logoGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3A%2310b981%3B%22%20%2F%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3A%23059669%3B%22%20%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2220%22%20fill%3D%22url%28%23logoGrad%29%22%20%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2265%22%20font-family%3D%22Inter%2C%20sans-serif%22%20font-size%3D%2250%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%20font-weight%3D%22800%22%3ETM%3C%2Ftext%3E%3C%2Fsvg%3E">
 
-  <!-- Tailwind CSS via CDN -->
+  <!-- OTIMIZAÇÃO: O script do Tailwind precisa estar no <head> para evitar o "flash" de conteúdo sem estilo (FOUC). É um bloqueio de renderização necessário neste método de implementação. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     // Configuração para ativar o dark mode via classe no HTML
@@ -19,16 +19,23 @@
   </script>
 
   <style>
-    /* Pequenos ajustes para complementar o Tailwind */
+    /* Estilos customizados complementares ao Tailwind */
     .hero__highlight {
       text-decoration-color: rgba(16, 185, 129, .5);
     }
     #drawer.open { display: block; }
     #sticky.show { display: block; }
-    #site-header.elev { background: rgba(255, 255, 255, .95); }
-    html.dark #site-header.elev { background: rgba(15, 23, 42, .95); }
+    /* Efeito de elevação no header com scroll */
+    #site-header.elev { 
+      background: rgba(255, 255, 255, .95); 
+      border-bottom-color: rgba(0, 0, 0, 0.08);
+    }
+    html.dark #site-header.elev { 
+      background: rgba(15, 23, 42, .95); 
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
 
-    /* Estilos para Animação de Scroll */
+    /* Animação de revelação de elementos no scroll */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -40,7 +47,7 @@
     }
   </style>
 
-  <!-- Script para evitar "flash" do tema incorreto ao carregar -->
+  <!-- Script para evitar "flash" do tema incorreto ao carregar a página -->
   <script>
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
@@ -55,7 +62,19 @@
   <header id="site-header" class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-black/5 dark:border-white/5 transition-all">
     <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
       <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
-        <span class="grid place-items-center w-8 h-8 rounded-full bg-black text-white font-black text-sm">TM</span>
+        <!-- LOGO SVG -->
+        <div class="w-8 h-8">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logoGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10b981;" />
+                <stop offset="100%" style="stop-color:#059669;" />
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" rx="20" fill="url(#logoGradHeader)" />
+            <text x="50" y="65" font-family="Inter, sans-serif" font-size="50" fill="white" text-anchor="middle" font-weight="800">TM</text>
+          </svg>
+        </div>
         <span class="text-lg leading-none">
           <b class="font-black tracking-tight dark:text-white">Tim Maia</b>
           <i class="block font-semibold text-slate-500 dark:text-slate-400 not-italic">Místico</i>
@@ -64,10 +83,11 @@
 
       <nav class="hidden md:flex items-center gap-2" aria-label="Principal">
         <a href="#inicio" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Início</a>
-        <a href="#historia" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">História</a>
-        <a href="#valor" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Valor</a>
+        <a href="#historia" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
+        <a href="#valor" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
         <a href="#conteudos" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
         <a href="#prova" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
+        <a href="#blog" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
         <a href="#faq" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
         <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white">Comprar</a>
       </nav>
@@ -75,16 +95,17 @@
       <div class="flex items-center gap-2">
         <!-- Seletor de Tema Dark/Light -->
         <button id="theme-toggle" class="p-2 rounded-full border dark:border-slate-700" aria-label="Alternar tema">
-          <svg id="theme-icon-light" class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-          <svg id="theme-icon-dark" class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
         </button>
+        <!-- Botão para abrir menu mobile -->
         <button id="btn-open" class="md:hidden p-2 rounded-full border dark:border-slate-700" aria-label="Abrir menu">
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M3 6h18M3 12h18M3 18h18" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile drawer -->
+    <!-- Menu Mobile (Drawer) -->
     <div id="drawer" class="fixed inset-0 bg-black/40 z-50 hidden" aria-hidden="true">
       <div class="absolute inset-x-4 top-20 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-3xl p-4">
         <button id="btn-close" class="absolute -top-14 right-0 p-2 bg-white dark:bg-slate-700 rounded-full border dark:border-slate-600" aria-label="Fechar menu">
@@ -92,10 +113,11 @@
         </button>
         <nav class="grid">
           <a href="#inicio" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Início</a>
-          <a href="#historia" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">História</a>
-          <a href="#valor" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Valor</a>
+          <a href="#historia" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
+          <a href="#valor" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
           <a href="#conteudos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
           <a href="#prova" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
+          <a href="#blog" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
           <a href="#faq" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
           <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb drawer__link w-full mt-2 inline-flex items-center justify-center rounded-full font-semibold transition px-5 py-3 bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white">Comprar</a>
         </nav>
@@ -104,9 +126,9 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- Seção Hero -->
     <section id="inicio" class="relative bg-slate-900 py-20 sm:py-28 overflow-hidden">
-      <!-- Imagem de Fundo -->
+      <!-- Imagem de Fundo com Overlay -->
       <div class="absolute inset-0 z-0">
         <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop" alt="Fundo cósmico com estrelas e nebulosas" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60 dark:bg-black/75"></div>
@@ -126,50 +148,102 @@
             <a href="#historia" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg border-2 border-white text-white hover:bg-white hover:text-black">Explorar primeiro</a>
           </div>
           <div class="mt-8 grid grid-cols-3 gap-4 text-sm text-slate-300 max-w-md mx-auto">
-            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M12 2L2 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" opacity=".3"/><path d="M12 22c5.16-1.26 9-6.45 9-12V7l-9-5-9 5v5c0 5.55 3.84 10.74 9 12zM12 4.43L18 7v3c0 4.54-3.2 8.79-6 10-2.8-1.21-6-5.46-6-10V7l6-2.57z"/></svg>Compra segura</div>
-            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="stroke-current text-slate-400"><circle cx="12" cy="13" r="8" stroke-width="1.5" fill="none"/><path d="M12 13V8M9 3h6" stroke-width="1.5" stroke-linecap="round"/></svg>Acesso imediato</div>
-            <div class="flex items-center justify-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" class="fill-current text-slate-400"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z" opacity=".3"/><path d="M14 2v6h6L14 2zM6 20V4h7v5h5v11H6z"/></svg>PDF premium</div>
+            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L10 18.451l7.834-13.449A11.954 11.954 0 0110 1.944zM10 4.069L4.056 14.122A9.954 9.954 0 0110 4.069z" clip-rule="evenodd" /></svg>Compra segura</div>
+            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 9.586V6z" clip-rule="evenodd" /></svg>Acesso imediato</div>
+            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" /></svg>PDF premium</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROBLEMA / STORYLINE -->
+    <!-- REDESIGN: Seção "Problema" com cards -->
     <section id="historia" class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-y-12 md:gap-x-16 items-start">
-        <div class="reveal">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center max-w-3xl mx-auto reveal">
           <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">o problema</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">As perguntas que não param de voltar</h2>
-          <p class="mt-3 text-black/70 dark:text-slate-400 max-w-prose">Curiosidade que não se sacia, sonoridade única e fontes confusas. A maioria das respostas está espalhada — e raramente é neutra.</p>
+          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">As perguntas que não calam</h2>
+          <p class="mt-3 text-black/70 dark:text-slate-400 max-w-prose mx-auto">A fase Racional de Tim Maia é um universo fascinante, mas entender suas origens é um desafio. As informações são espalhadas, confusas e raramente imparciais.</p>
         </div>
-        <ol class="relative border-l-2 border-black/10 dark:border-white/10 pl-8 space-y-8 reveal">
-          <li class="relative"><span class="absolute -left-[2.1rem] top-1 grid place-items-center w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold">1</span><h3 class="font-extrabold text-lg dark:text-white">Curiosidade não saciada</h3><p class="text-black/70 dark:text-slate-400">O que significa “Leia o Livro” e qual a conexão com Tim Maia?</p></li>
-          <li class="relative"><span class="absolute -left-[2.1rem] top-1 grid place-items-center w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold">2</span><h3 class="font-extrabold text-lg dark:text-white">Mistério musical</h3><p class="text-black/70 dark:text-slate-400">Por que os discos “Racional” soam tão diferentes do resto da obra?</p></li>
-          <li class="relative"><span class="absolute -left-[2.1rem] top-1 grid place-items-center w-6 h-6 rounded-full bg-emerald-500 text-white text-xs font-bold">3</span><h3 class="font-extrabold text-lg dark:text-white">Informação fragmentada</h3><p class="text-black/70 dark:text-slate-400">Wikipedia incompleta, fóruns contraditórios, artigos superficiais.</p></li>
-        </ol>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Curiosidade não saciada</h3>
+            <p class="mt-1 text-black/70 dark:text-slate-400">O que significa "Leia o Livro" e qual a real conexão com a vida e obra de Tim Maia?</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12-3" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Mistério musical</h3>
+            <p class="mt-1 text-black/70 dark:text-slate-400">Por que os álbuns "Racional" soam tão diferentes e por que se tornaram itens de culto?</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Informação fragmentada</h3>
+            <p class="mt-1 text-black/70 dark:text-slate-400">Wikipedia, fóruns e artigos superficiais oferecem apenas peças do quebra-cabeça.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- VALOR -->
+    <!-- Seção de Valor (Solução) com Ícones -->
     <section id="valor" class="py-16 md:py-20 bg-[#F6F7F6] dark:bg-slate-800">
       <div class="max-w-7xl mx-auto px-5">
         <div class="text-center max-w-3xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">o que você leva</p>
+          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">a solução</p>
           <h2 class="text-3xl sm:text-5xl font-black dark:text-white">Conhecimento completo, sem ruído</h2>
           <p class="mt-3 text-black/70 dark:text-slate-300">+30 páginas de curadoria exclusiva — contexto, análise e prática em linguagem clara.</p>
         </div>
         <div class="mt-12 grid md:grid-cols-3 gap-6">
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">📖</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">História descomplicada</h3><p class="text-black/70 dark:text-slate-300 mt-2">Origem da doutrina e de Manuel J. Coelho — sem jargões.</p></article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🎧</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">Códigos decifrados</h3><p class="text-black/70 dark:text-slate-300 mt-2">Energia Racional, imunização e “dois mundos”, sem hermetismo.</p></article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">✨</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">O legado do Síndico</h3><p class="text-black/70 dark:text-slate-300 mt-2">Como a filosofia transformou os álbuns lendários.</p></article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">🧠</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">Análise imparcial</h3><p class="text-black/70 dark:text-slate-300 mt-2">Conexões culturais e psicológicas — sem proselitismo.</p></article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">📝</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">Exercícios práticos</h3><p class="text-black/70 dark:text-slate-300 mt-2">3 atividades aplicáveis para autoconhecimento.</p></article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal"><div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">⚡</div><h3 class="mt-4 font-extrabold text-xl dark:text-white">Acesso instantâneo</h3><p class="text-black/70 dark:text-slate-300 mt-2">PDF premium por e-mail logo após o pagamento.</p></article>
+          <!-- Ícones substituindo emojis -->
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">História descomplicada</h3><p class="text-black/70 dark:text-slate-300 mt-2">Origem da doutrina e de Manuel J. Coelho — sem jargões.</p>
+          </article>
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7h1a2 2 0 012 2v5a2 2 0 01-2 2h-1m-6 0H6a2 2 0 01-2-2V9a2 2 0 012-2h1M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M9 7h6" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Códigos decifrados</h3><p class="text-black/70 dark:text-slate-300 mt-2">Energia Racional, imunização e “dois mundos”, sem hermetismo.</p>
+          </article>
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">O legado do Síndico</h3><p class="text-black/70 dark:text-slate-300 mt-2">Como a filosofia transformou os álbuns lendários.</p>
+          </article>
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Análise imparcial</h3><p class="text-black/70 dark:text-slate-300 mt-2">Conexões culturais e psicológicas — sem proselitismo.</p>
+          </article>
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Exercícios práticos</h3><p class="text-black/70 dark:text-slate-300 mt-2">3 atividades aplicáveis para autoconhecimento.</p>
+          </article>
+          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
+            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Acesso instantâneo</h3><p class="text-black/70 dark:text-slate-300 mt-2">PDF premium por e-mail logo após o pagamento.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CONTEÚDOS (Accordion) -->
+    <!-- Seção de Conteúdos (Accordion) -->
     <section id="conteudos" class="py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-5">
         <div class="text-center max-w-3xl mx-auto reveal">
@@ -193,7 +267,7 @@
       </div>
     </section>
 
-    <!-- PROVA SOCIAL -->
+    <!-- Seção de Prova Social -->
     <section id="prova" class="py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-5">
         <div class="text-center max-w-2xl mx-auto reveal">
@@ -211,14 +285,14 @@
           <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=12" alt="Foto de Ricardo L." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Ricardo L.</p><span class="text-black/60 dark:text-slate-400 text-sm">Fã de MPB</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Análise impecável</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Um guia que finalmente explica tudo sem rodeios. Leitura essencial!”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
           <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=32" alt="Foto de Juliana S." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Juliana S.</p><span class="text-black/60 dark:text-slate-400 text-sm">Designer</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Clareza que buscava</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Design impecável e direto ao ponto. A clareza que eu buscava.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
           <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=64" alt="Foto de M. Oliveira" class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">M. Oliveira</p><span class="text-black/60 dark:text-slate-400 text-sm">Pesquisador</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Trabalho jornalístico sério</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“A abordagem neutra e cultural é o grande diferencial. Referência!”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=17" alt="Foto de Carlos M." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Carlos M.</p><span class="text-black/60 dark:text-slate-400 text-sm">Músico</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Contexto perfeito</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Explica com perfeição todo o contexto por trás da transformação.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=47" alt="Foto de Ana Paula" class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Ana Paula</p><span class="text-black/60 dark:text-slate-400 text-sm">Estudante</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Fonte confiável</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Usei como fonte principal no meu TCC. Confiável e bem completo.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
+          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&q=80" alt="Foto de Gabriela D." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Gabriela D.</p><span class="text-black/60 dark:text-slate-400 text-sm">Música</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Contexto perfeito</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Explica com perfeição todo o contexto por trás da transformação.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
+          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&q=80" alt="Foto de Michael Bastos" class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Michael Bastos</p><span class="text-black/60 dark:text-slate-400 text-sm">Estudante</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Fonte confiável</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Usei como fonte principal no meu TCC. Confiável e bem completo.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
           <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=68" alt="Foto de Roberto F." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Roberto F.</p><span class="text-black/60 dark:text-slate-400 text-sm">Jornalista</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Explicação clara</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Após tantas matérias, enfim uma explicação clara e muito completa.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
         </div>
       </div>
     </section>
 
-    <!-- OFERTA -->
+    <!-- Seção de Oferta -->
     <section id="oferta" class="py-16 md:py-20 bg-[#0E0E10] text-white">
       <div class="max-w-7xl mx-auto px-5">
         <div class="text-center max-w-2xl mx-auto">
@@ -260,6 +334,21 @@
       </div>
     </section>
 
+    <!-- NOVA SEÇÃO: Blog -->
+    <section id="blog" class="py-16 md:py-20 bg-slate-50 dark:bg-slate-950">
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">Nosso Blog</p>
+          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">Artigos & Análises</h2>
+          <p class="mt-3 text-black/70 dark:text-slate-400 max-w-prose mx-auto">Aprofunde-se em temas relacionados com nossos artigos exclusivos no Medium.</p>
+        </div>
+        <!-- O container dos artigos será preenchido pelo JavaScript -->
+        <div id="blog-articles-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Os cards dos artigos serão inseridos aqui -->
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section id="faq" class="py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-5">
@@ -284,41 +373,53 @@
   
   <footer class="bg-[#FAF8F5] dark:bg-slate-950 border-t border-black/5 dark:border-white/5 pt-10">
       <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-8">
-          <div>
-              <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
-                  <span class="grid place-items-center w-8 h-8 rounded-full bg-black text-white font-black text-sm">TM</span>
-                  <span class="text-lg leading-none">
-                      <b class="font-black tracking-tight dark:text-white">Tim Maia</b>
-                      <i class="block font-semibold text-slate-500 dark:text-slate-400 not-italic">Místico</i>
-                  </span>
-              </a>
-              <ul class="text-sm text-black/70 dark:text-slate-400 mt-4 space-y-2">
-                  <li>Site protegido por SSL • Pagamento seguro</li>
-                  <li><a href="#termos" class="underline">Termos de Uso</a> • <a href="#privacidade" class="underline">Política de Privacidade</a></li>
-              </ul>
-          </div>
-          <nav class="space-y-2 md:justify-self-end">
-              <a href="#prova" class="block hover:underline">Depoimentos</a>
-              <a href="#valor" class="block hover:underline">O que você leva</a>
-              <a href="#oferta" class="block hover:underline">Comprar</a>
-          </nav>
+        <div>
+            <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
+                <!-- LOGO ANTERIOR SVG -->
+                <div class="w-8 h-8">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="logoGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#10b981;" />
+                        <stop offset="100%" style="stop-color:#059669;" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" rx="20" fill="url(#logoGradFooter)" />
+                    <text x="50" y="65" font-family="Inter, sans-serif" font-size="50" fill="white" text-anchor="middle" font-weight="800">TM</text>
+                  </svg>
+                </div>
+                <span class="text-lg leading-none">
+                  <b class="font-black tracking-tight dark:text-white">Tim Maia</b>
+                  <i class="block font-semibold text-slate-500 dark:text-slate-400 not-italic">Místico</i>
+                </span>
+            </a>
+            <ul class="text-sm text-black/70 dark:text-slate-400 mt-4 space-y-2">
+                <li>Site protegido por SSL • Pagamento seguro</li>
+                <li><a href="#termos" class="underline">Termos de Uso</a> • <a href="#privacidade" class="underline">Política de Privacidade</a></li>
+            </ul>
+        </div>
+        <nav class="space-y-2 md:justify-self-end">
+            <a href="#prova" class="block hover:underline">Depoimentos</a>
+            <a href="#valor" class="block hover:underline">O que você leva</a>
+            <a href="#oferta" class="block hover:underline">Comprar</a>
+        </nav>
       </div>
       <p class="text-center text-black/60 dark:text-slate-400 py-8 text-sm">© <span id="year"></span> Tim Maia Místico. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Sticky CTA (mobile) -->
+  <!-- CTA Flutuante (mobile) -->
   <div id="sticky" class="fixed bottom-3 inset-x-4 z-50 hidden">
       <div class="rounded-2xl bg-black dark:bg-slate-800 text-white border border-white/10 shadow-2xl p-3 flex items-center justify-between gap-3">
-          <div class="text-sm leading-tight">
-              <b class="font-semibold">Tim Maia Místico</b>
-              <div class="text-white/80">Acesso hoje por <span data-js="price-inline">R$39,90</span></div>
-          </div>
-          <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500" data-js="checkout-cta">Comprar</a>
+        <div class="text-sm leading-tight">
+          <b class="font-semibold">Tim Maia Místico</b>
+          <div class="text-white/80">Acesso hoje por <span data-js="price-inline">R$39,90</span></div>
+        </div>
+        <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500" data-js="checkout-cta">Comprar</a>
       </div>
   </div>
 
-  <!-- Hotmart Widget Script -->
-  <script type="text/javascript">
+  <!-- OTIMIZAÇÃO: Adicionado 'async' e 'defer' aos scripts para não bloquear o carregamento da página -->
+  <script type="text/javascript" async defer>
     function importHotmart(){ 
       var imported = document.createElement('script'); 
       imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
@@ -332,18 +433,19 @@
     importHotmart(); 
   </script>
 
-  <script>
-    /* ===== CONFIG ===== */
+  <!-- Scripts da Página -->
+  <script async defer>
+    /* ===== CONFIGURAÇÕES GLOBAIS ===== */
     const CHECKOUT_URL = "https://pay.hotmart.com/J101435163B";
     const PRICE_LABEL = "R$39,90";
 
-    /* ===== HELPERS ===== */
+    /* ===== FUNÇÃO HELPER (Query Selector) ===== */
     const $ = (sel, root = document) => root.querySelector(sel);
     
     /* ===== LÓGICA DA PÁGINA ===== */
     document.addEventListener('DOMContentLoaded', () => {
       
-      // HEADER: elevação + drawer
+      // HEADER: Lógica de elevação e menu mobile (drawer)
       (function headerInit() {
         const header = $('#site-header');
         if (!header) return;
@@ -365,7 +467,7 @@
         document.querySelectorAll('#drawer .drawer__link').forEach(a => a.addEventListener('click', close));
       })();
 
-      // PREÇO & CHECKOUT
+      // PREÇO & CHECKOUT: Atualiza os elementos de preço dinamicamente
       (function pricing() {
         document.querySelectorAll('[data-js="price-number"], [data-js="price-inline"], [data-js="price-cta"]').forEach(el => {
           if (el.dataset.js === 'price-cta') {
@@ -379,12 +481,13 @@
         });
       })();
 
-      // ROLLING 24H (timer + vendas)
+      // URGÊNCIA: Timer de 24h e contador de vendas
       (function rolling24h(){
         const key = 'tm24';
         const now = Date.now();
         let start = Number(localStorage.getItem(`${key}_start`));
 
+        // Reinicia o contador se já passaram 24h
         const valid = start && (now - start) < 24 * 3600 * 1000;
         if (!valid){
           start = Date.now();
@@ -425,7 +528,7 @@
         setInterval(tick, 1000);
       })();
       
-      // STICKY CTA (mobile)
+      // CTA FLUTUANTE: Lógica de exibição no scroll
       (function stickyCTA() {
         const sticky = $('#sticky');
         const hero = $('#inicio');
@@ -447,13 +550,13 @@
         window.addEventListener('scroll', onScroll, { passive: true });
       })();
 
-      // ANO NO RODAPÉ
+      // RODAPÉ: Atualiza o ano automaticamente
       (function year() {
         const el = $('#year');
         if (el) el.textContent = new Date().getFullYear();
       })();
 
-      // LÓGICA DO SELETOR DE TEMA
+      // SELETOR DE TEMA: Lógica para dark/light mode
       (function themeToggle() {
         const toggleButton = $('#theme-toggle');
         if(!toggleButton) return;
@@ -464,20 +567,90 @@
         });
       })();
 
-      // LÓGICA DE ANIMAÇÃO DE SCROLL
-      (function scrollReveal() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('active');
-            }
-          });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => {
-          observer.observe(el);
+      // ANIMAÇÃO DE SCROLL: Revela elementos ao entrarem na tela
+      const scrollRevealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
         });
+      }, { threshold: 0.1 });
+
+      function initScrollReveal(selector = '.reveal') {
+        document.querySelectorAll(selector).forEach(el => {
+          scrollRevealObserver.observe(el);
+        });
+      }
+
+      // ===================================================================
+      // ARTIGOS DO BLOG - EDITE A LISTA ABAIXO PARA ATUALIZAR O SITE
+      // ===================================================================
+      const articles = [
+        {
+          url: 'https://medium.com/',
+          imageUrl: 'https://images.unsplash.com/photo-1587223383391-2a161f54b8d0?q=80&w=870&auto=format&fit=crop',
+          title: 'As Influências do Soul na Fase Racional',
+          subtitle: 'Uma análise musical que vai além do óbvio, explorando os arranjos de metais e as linhas de baixo que definiram o som de Tim Maia nos anos 70.'
+        },
+        {
+          url: 'https://medium.com/',
+          imageUrl: 'https://images.unsplash.com/photo-1518600576225-c1d028a4e627?q=80&w=870&auto=format&fit=crop',
+          title: '"Universo em Desencanto": Um Guia para Iniciantes',
+          subtitle: 'Desmistificamos os principais conceitos da Cultura Racional de forma simples, para que você possa entender as letras de Tim Maia sem precisar ler os mil volumes.'
+        },
+        {
+          url: 'https://medium.com/',
+          imageUrl: 'https://images.unsplash.com/photo-1504321925958-b0a4f5b51a23?q=80&w=774&auto=format&fit=crop',
+          title: 'O Legado Pós-Racional: Como a Fase Mística Influenciou o Resto da Carreira',
+          subtitle: 'Analisamos como a experiência com a Cultura Racional, mesmo após o rompimento, ecoou nas composições e no comportamento de Tim Maia até o fim de sua vida.'
+        },
+        {
+          url: 'https://medium.com/',
+          imageUrl: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=870&auto=format&fit=crop',
+          title: 'A Relação de Tim Maia com Outros Artistas',
+          subtitle: 'Explore as parcerias, amizades e rivalidades que marcaram a carreira do Síndico durante e após sua fase mais mística e controversa.'
+        }
+      ];
+
+      (function renderBlogArticles() {
+        const container = $('#blog-articles-container');
+        if (!container) return;
+
+        let articlesHTML = '';
+        articles.forEach(article => {
+          // Codifica o título para usar na URL do placeholder
+          const encodedTitle = encodeURIComponent(article.title);
+          const placeholderUrl = `https://placehold.co/870x480/059669/FFFFFF?text=${encodedTitle}`;
+          
+          articlesHTML += `
+            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="group block">
+              <div class="reveal rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm transition duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
+                <img 
+                  src="${article.imageUrl}" 
+                  alt="Imagem de capa para o artigo: ${article.title}" 
+                  class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  onerror="this.onerror=null;this.src='${placeholderUrl}';"
+                >
+                <div class="p-6 flex flex-col flex-grow">
+                  <h3 class="font-extrabold text-xl dark:text-white">${article.title}</h3>
+                  <p class="mt-2 text-black/70 dark:text-slate-400 text-sm flex-grow">${article.subtitle}</p>
+                  <div class="mt-4 font-semibold text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-2 self-start">
+                    Leia no Medium
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          `;
+        });
+
+        container.innerHTML = articlesHTML;
+        // Re-inicializa o observer para os novos elementos
+        initScrollReveal('#blog-articles-container .reveal');
       })();
+
+      // Inicializa o scroll reveal para os elementos estáticos da página
+      initScrollReveal();
     });
   </script>
 </body>
