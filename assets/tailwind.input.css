@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Seus estilos customizados */
+.hero__highlight { text-decoration-color: rgba(16,185,129,.5); }
+#drawer.open { display:block; }
+#sticky.show { display:block; }
+
+/* Header elevado ao rolar */
+#site-header.elev {
+  background: rgba(255,255,255,.95);
+  border-bottom-color: rgba(0,0,0,.08);
+}
+html.dark #site-header.elev {
+  background: rgba(15,23,42,.95);
+  border-bottom-color: rgba(255,255,255,.08);
+}
+
+/* Reveal on scroll */
+.reveal { opacity:0; transform:translateY(20px);
+  transition: opacity .6s ease-out, transform .6s ease-out; }
+.reveal.active { opacity:1; transform:translateY(0); }
+
+/* Travar scroll ao abrir modal */
+body.modal-open { overflow:hidden; }
