@@ -5,821 +5,247 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tim Maia Místico — Edição Especial</title>
   <meta name="description" content="Guia elegante e definitivo que decifra a Cultura Racional e a fase Racional de Tim Maia. +30 páginas em PDF premium, acesso imediato e garantia." />
-  
-  <!-- LOGO: Favicon em SVG estilizado e moderno -->
-  <link rel="icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22logoGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3A%2310b981%3B%22%20%2F%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3A%23059669%3B%22%20%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2220%22%20fill%3D%22url%28%23logoGrad%29%22%20%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2265%22%20font-family%3D%22Inter%2C%20sans-serif%22%20font-size%3D%2250%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%20font-weight%3D%22800%22%3ETM%3C%2Ftext%3E%3C%2Fsvg%3E">
 
-  <!-- OTIMIZAÇÃO: O script do Tailwind precisa estar no <head> para evitar o "flash" de conteúdo sem estilo (FOUC). É um bloqueio de renderização necessário neste método de implementação. -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Configuração para ativar o dark mode via classe no HTML
-    tailwind.config = {
-      darkMode: 'class',
-    }
-  </script>
+  <!-- Favicon simples -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23059669%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2239%22%20fill%3D%22white%22%20font-family%3D%22Inter,sans-serif%22%20font-size%3D%2250%22%20font-weight%3D%22800%22%20text-anchor%3D%22middle%22%3ETM%3C/text%3E%3C/svg%3E">
 
-  <style>
-    /* Estilos customizados complementares ao Tailwind */
-    .hero__highlight {
-      text-decoration-color: rgba(16, 185, 129, .5);
-    }
-    #drawer.open { display: block; }
-    #sticky.show { display: block; }
-    /* Efeito de elevação no header com scroll */
-    #site-header.elev { 
-      background: rgba(255, 255, 255, .95); 
-      border-bottom-color: rgba(0, 0, 0, 0.08);
-    }
-    html.dark #site-header.elev { 
-      background: rgba(15, 23, 42, .95); 
-      border-bottom-color: rgba(255, 255, 255, 0.08);
-    }
+  <!-- CSS compilado -->
+  <link rel="stylesheet" href="assets/styles.css">
 
-    /* Animação de revelação de elementos no scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Impede o scroll da página quando o modal está aberto */
-    body.modal-open {
-        overflow: hidden;
-    }
-  </style>
-
-  <!-- Script para evitar "flash" do tema incorreto ao carregar a página -->
-  <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  </script>
+  <!-- Hotmart (terceiros) -->
+  <link rel="stylesheet" href="https://static.hotmart.com/css/hotmart-fb.min.css">
+  <script src="https://static.hotmart.com/checkout/widget.min.js" defer></script>
 </head>
+
 <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-200 antialiased">
+  <!-- ===================== HEADER ===================== -->
+  <header id="site-header" class="fixed top-0 z-50 w-full border-b border-transparent backdrop-blur transition-colors">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#inicio" class="flex items-center gap-2">
+          <span class="inline-block h-8 w-8 rounded-lg bg-emerald-500"></span>
+          <span class="font-extrabold tracking-tight">Tim Maia Místico</span>
+        </a>
 
-  <!-- Header -->
-  <header id="site-header" class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-black/5 dark:border-white/5 transition-all">
-    <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-      <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
-        <!-- LOGO SVG -->
-        <div class="w-8 h-8">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="logoGradHeader" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#10b981;" />
-                <stop offset="100%" style="stop-color:#059669;" />
-              </linearGradient>
-            </defs>
-            <rect width="100" height="100" rx="20" fill="url(#logoGradHeader)" />
-            <text x="50" y="65" font-family="Inter, sans-serif" font-size="50" fill="white" text-anchor="middle" font-weight="800">TM</text>
-          </svg>
+        <nav class="hidden gap-6 md:flex">
+          <a href="#inicio" class="font-medium hover:text-emerald-600 dark:hover:text-emerald-400">Início</a>
+          <a href="#conteudo" class="font-medium hover:text-emerald-600 dark:hover:text-emerald-400">Conteúdo</a>
+          <a href="#bonus" class="font-medium hover:text-emerald-600 dark:hover:text-emerald-400">Bônus</a>
+          <a href="#faq" class="font-medium hover:text-emerald-600 dark:hover:text-emerald-400">FAQ</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <button id="theme-toggle" class="rounded-xl border px-3 py-2 text-sm font-semibold hover:bg-emerald-50 dark:hover:bg-slate-800">Tema</button>
+          <a class="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700" data-js="checkout-cta" target="_blank" rel="noopener">Comprar</a>
         </div>
-        <span class="text-lg leading-none">
-          <b class="font-black tracking-tight dark:text-white">Tim Maia</b>
-          <i class="block font-semibold text-slate-500 dark:text-slate-400 not-italic">Místico</i>
-        </span>
-      </a>
 
-      <nav class="hidden md:flex items-center gap-2" aria-label="Principal">
-        <a href="#inicio" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Início</a>
-        <a href="#historia" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
-        <a href="#valor" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
-        <a href="#conteudos" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
-        <a href="#bonus" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Bônus</a>
-        <a href="#prova" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
-        <a href="#blog" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
-        <a href="#faq" class="px-3 py-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
-        <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white">Comprar</a>
-      </nav>
-      
-      <div class="flex items-center gap-2">
-        <!-- Seletor de Tema Dark/Light -->
-        <button id="theme-toggle" class="p-2 rounded-full border dark:border-slate-700" aria-label="Alternar tema">
-          <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-          <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-        </button>
-        <!-- Botão para abrir menu mobile -->
-        <button id="btn-open" class="md:hidden p-2 rounded-full border dark:border-slate-700" aria-label="Abrir menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M3 6h18M3 12h18M3 18h18" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
+        <button id="btn-open" class="md:hidden rounded-xl border px-3 py-2 text-sm font-semibold">Menu</button>
       </div>
     </div>
 
-    <!-- Menu Mobile (Drawer) -->
-    <div id="drawer" class="fixed inset-0 bg-black/40 z-50 hidden" aria-hidden="true">
-      <div class="absolute inset-x-4 top-20 bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-3xl p-4">
-        <button id="btn-close" class="absolute -top-14 right-0 p-2 bg-white dark:bg-slate-700 rounded-full border dark:border-slate-600" aria-label="Fechar menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-        <nav class="grid">
-          <a href="#inicio" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Início</a>
-          <a href="#historia" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">O Problema</a>
-          <a href="#valor" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">A Solução</a>
-          <a href="#conteudos" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Conteúdos</a>
-          <a href="#bonus" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Bônus</a>
-          <a href="#prova" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Prova</a>
-          <a href="#blog" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">Blog</a>
-          <a href="#faq" class="drawer__link block px-3 py-3 rounded-2xl hover:bg-black/5 dark:hover:bg-white/10 font-medium">FAQ</a>
-          <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb drawer__link w-full mt-2 inline-flex items-center justify-center rounded-full font-semibold transition px-5 py-3 bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white">Comprar</a>
+    <!-- Drawer mobile -->
+    <div id="drawer" aria-hidden="true" class="fixed inset-0 z-50 hidden bg-black/50 md:hidden">
+      <div class="ml-auto h-full w-80 bg-white p-6 dark:bg-slate-900">
+        <div class="mb-6 flex items-center justify-between">
+          <span class="font-extrabold">Navegação</span>
+          <button id="btn-close" class="rounded-lg border px-2 py-1 text-sm">Fechar</button>
+        </div>
+        <nav class="flex flex-col gap-4">
+          <a class="drawer__link" href="#inicio">Início</a>
+          <a class="drawer__link" href="#conteudo">Conteúdo</a>
+          <a class="drawer__link" href="#bonus">Bônus</a>
+          <a class="drawer__link" href="#faq">FAQ</a>
+          <a class="drawer__link rounded-xl bg-emerald-600 px-4 py-2 text-white" data-js="checkout-cta" target="_blank" rel="noopener">Comprar</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Seção Hero -->
-    <section id="inicio" class="relative bg-slate-900 py-20 sm:py-28 overflow-hidden">
-      <!-- Imagem de Fundo com Overlay -->
-      <div class="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop" alt="Fundo cósmico com estrelas e nebulosas" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/60 dark:bg-black/75"></div>
-      </div>
-      
-      <div class="relative z-10 max-w-4xl mx-auto px-5 text-center">
-        <div>
-          <p class="uppercase tracking-[.14em] text-xs text-white/70 font-semibold">edição especial</p>
-          <h1 class="mt-2 text-4xl sm:text-6xl font-black leading-tight text-white">
-            Desvende o enigma de <u class="hero__highlight italic">Tim Maia Racional</u>
+  <!-- ===================== HERO ===================== -->
+  <section id="inicio" class="pt-28">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div class="reveal">
+          <h1 class="font-extrabold text-4xl leading-tight md:text-5xl">
+            O <span class="hero__highlight underline decoration-emerald-500">guia essencial</span> da fase Racional de Tim Maia
           </h1>
-          <p class="mt-5 text-slate-200 text-lg max-w-prose mx-auto">
-            Um guia elegante e definitivo que decifra a filosofia, a história e os segredos da Cultura Racional — sem jargões, sem ruído.
+          <p class="mt-4 text-black/70 dark:text-slate-400">
+            Entenda o universo místico, as letras e as polêmicas da era “Universo em Desencanto”, com curadoria moderna e objetiva.
           </p>
-          <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-white text-slate-900 hover:bg-slate-200" data-js="price-cta">Comprar agora</a>
-            <a href="#historia" class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg border-2 border-white text-white hover:bg-white hover:text-black">Explorar primeiro</a>
-          </div>
-          <div class="mt-8 grid grid-cols-3 gap-4 text-sm text-slate-300 max-w-md mx-auto">
-            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.002L10 18.451l7.834-13.449A11.954 11.954 0 0110 1.944zM10 4.069L4.056 14.122A9.954 9.954 0 0110 4.069z" clip-rule="evenodd" /></svg>Compra segura</div>
-            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.414-1.414L11 9.586V6z" clip-rule="evenodd" /></svg>Acesso imediato</div>
-            <div class="flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" /></svg>PDF premium</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- REDESIGN: Seção "Problema" com cards -->
-    <section id="historia" class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-3xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">o problema</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">As perguntas que não calam</h2>
-          <p class="mt-3 text-black/70 dark:text-slate-400 max-w-prose mx-auto">A fase Racional de Tim Maia é um universo fascinante, mas entender suas origens é um desafio. As informações são espalhadas, confusas e raramente imparciais.</p>
-        </div>
-        <div class="mt-12 grid md:grid-cols-3 gap-6">
-          <!-- Card 1 -->
-          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Curiosidade não saciada</h3>
-            <p class="mt-1 text-black/70 dark:text-slate-400">O que significa "Leia o Livro" e qual a real conexão com a vida e obra de Tim Maia?</p>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <a class="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-700" data-js="checkout-cta" target="_blank" rel="noopener" id="cta-hero">
+              <span data-js="price-cta">Comprar agora</span>
+            </a>
+            <a href="#conteudo" class="rounded-xl border px-6 py-3 font-semibold hover:bg-emerald-50 dark:hover:bg-slate-800">Ver conteúdo</a>
           </div>
-          <!-- Card 2 -->
-          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12-3" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Mistério musical</h3>
-            <p class="mt-1 text-black/70 dark:text-slate-400">Por que os álbuns "Racional" soam tão diferentes e por que se tornaram itens de culto?</p>
-          </div>
-          <!-- Card 3 -->
-          <div class="reveal rounded-2xl border dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-6 text-center">
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/10 text-emerald-500 grid place-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-lg dark:text-white">Informação fragmentada</h3>
-            <p class="mt-1 text-black/70 dark:text-slate-400">Wikipedia, fóruns e artigos superficiais oferecem apenas peças do quebra-cabeça.</p>
+
+          <div class="mt-4 text-sm text-black/60 dark:text-slate-400">
+            Acesso imediato • PDF premium • Garantia
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Seção de Valor (Solução) com Ícones -->
-    <section id="valor" class="py-16 md:py-20 bg-[#F6F7F6] dark:bg-slate-800">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-3xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">a solução</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">Conhecimento completo, sem ruído</h2>
-          <p class="mt-3 text-black/70 dark:text-slate-300">+30 páginas de curadoria exclusiva — contexto, análise e prática em linguagem clara.</p>
-        </div>
-        <div class="mt-12 grid md:grid-cols-3 gap-6">
-          <!-- Ícones substituindo emojis -->
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">História descomplicada</h3><p class="text-black/70 dark:text-slate-300 mt-2">Origem da doutrina e de Manuel J. Coelho — sem jargões.</p>
-          </article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7h1a2 2 0 012 2v5a2 2 0 01-2 2h-1m-6 0H6a2 2 0 01-2-2V9a2 2 0 012-2h1M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M9 7h6" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Códigos decifrados</h3><p class="text-black/70 dark:text-slate-300 mt-2">Energia Racional, imunização e “dois mundos”, sem hermetismo.</p>
-          </article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">O legado do Síndico</h3><p class="text-black/70 dark:text-slate-300 mt-2">Como a filosofia transformou os álbuns lendários.</p>
-          </article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Análise imparcial</h3><p class="text-black/70 dark:text-slate-300 mt-2">Conexões culturais e psicológicas — sem proselitismo.</p>
-          </article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Exercícios práticos</h3><p class="text-black/70 dark:text-slate-300 mt-2">3 atividades aplicáveis para autoconhecimento.</p>
-          </article>
-          <article class="group rounded-3xl border dark:border-slate-700 bg-white dark:bg-slate-700/50 p-6 shadow-sm transition duration-300 hover:shadow-lg hover:scale-105 reveal">
-            <div class="w-12 h-12 rounded-xl bg-black dark:bg-slate-900 text-white grid place-items-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            </div>
-            <h3 class="mt-4 font-extrabold text-xl dark:text-white">Acesso instantâneo</h3><p class="text-black/70 dark:text-slate-300 mt-2">PDF premium por e-mail logo após o pagamento.</p>
-          </article>
+        <div class="reveal">
+          <img class="mx-auto w-full max-w-md rounded-2xl shadow" src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?q=80&w=870&auto=format&fit=crop" alt="Capa do guia Tim Maia Místico" loading="lazy">
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Seção de Conteúdos (Accordion) -->
-    <section id="conteudos" class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-3xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">o que você encontrará</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">Dentro do eBook</h2>
-          <p class="mt-2 text-black/70 dark:text-slate-400">Uma seleção enxuta do que você realmente precisa para entender a fase Racional.</p>
-        </div>
-        <div class="mt-10 grid lg:grid-cols-2 gap-4">
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>01. Cronologia completa (1935–2025)</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">As datas-chave da Cultura Racional e da fase Racional de Tim Maia, de forma direta e confiável.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>02. Análise dos álbuns “Racional Vol. 1 & 2”</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">O que torna essas obras únicas: letras, arranjos, vocais e o contexto por trás.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>03. Biografia de Manuel J. Coelho</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Trajetória do fundador e a “escrituração” do Universo em Desencanto.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>04. Conceitos explicados sem jargões</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Dois mundos, Energia Racional e Imunização — do básico ao avançado.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>05. Como Tim Maia se envolveu e por que saiu</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">A conversão radical, a disciplina no palco e o rompimento ruidoso.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>06. Exercícios práticos de autoconhecimento</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Três propostas para aplicar imediatamente o que você aprendeu.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>07. Bibliografia e fontes primárias</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Onde se aprofundar com segurança: obras, entrevistas e registros.</p></details>
-          <details class="reveal rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>08. Guia de escuta comentado</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Faixa a faixa com sugestões de percepção e contexto histórico.</p></details>
-        </div>
-        <div class="text-center mt-8">
-          <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white" data-js="price-cta">Quero desvendar</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- NOVA SEÇÃO: Bônus (Captura de E-mail) -->
-    <section id="bonus" class="py-16 md:py-20 bg-[#F6F7F6] dark:bg-slate-800">
-        <div class="max-w-7xl mx-auto px-5">
-            <div class="max-w-2xl mx-auto text-center">
-                <div class="reveal">
-                    <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">Bônus Exclusivo</p>
-                    <h2 class="text-3xl sm:text-5xl font-black dark:text-white mt-2">Receba a Fonte Original</h2>
-                    <p class="mt-4 text-black/70 dark:text-slate-300 max-w-prose mx-auto">Para aprofundar seus estudos, cadastre-se e receba gratuitamente o livro <b class="dark:text-white">"Universo em Desencanto"</b>, a obra que inspirou a fase Racional de Tim Maia, em formato PDF.</p>
-                    
-                    <form id="bonus-form" class="mt-8 max-w-md mx-auto">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <input type="text" id="bonus-name" placeholder="Seu nome" required class="w-full px-4 py-3 rounded-full border dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-center">
-                            <input type="email" id="bonus-email" placeholder="Seu melhor e-mail" required class="w-full px-4 py-3 rounded-full border dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-center">
-                        </div>
-                        <button type="submit" class="w-full mt-4 inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-emerald-600 text-white hover:bg-emerald-500">Receber Bônus Grátis</button>
-                    </form>
-                    <p id="bonus-feedback" class="mt-4 text-sm text-slate-600 dark:text-slate-400"></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Prova Social -->
-    <section id="prova" class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-2xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">prova social</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">O que os leitores dizem</h2>
-          <p class="mt-2 text-black/70 dark:text-slate-400">Mais de 500 pessoas já desvendaram o mistério. Veja por que recomendam este eBook.</p>
-        </div>
-        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal">
-          <div><b class="block text-5xl font-black dark:text-white">4,9/5</b><span class="text-black/70 dark:text-slate-400">Avaliação média</span></div>
-          <div><b class="block text-5xl font-black dark:text-white">500+</b><span class="text-black/70 dark:text-slate-400">Leitores satisfeitos</span></div>
-          <div><b class="block text-5xl font-black dark:text-white">98%</b><span class="text-black/70 dark:text-slate-400">Recomendariam</span></div>
-          <div><b class="block text-5xl font-black dark:text-white">Zero</b><span class="text-black/70 dark:text-slate-400">Reembolsos</span></div>
-        </div>
-        <div class="mt-10 grid md:grid-cols-3 gap-6">
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=12" alt="Foto de Ricardo L." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Ricardo L.</p><span class="text-black/60 dark:text-slate-400 text-sm">Fã de MPB</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Análise impecável</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Um guia que finalmente explica tudo sem rodeios. Leitura essencial!”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=32" alt="Foto de Juliana S." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Juliana S.</p><span class="text-black/60 dark:text-slate-400 text-sm">Designer</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Clareza que buscava</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Design impecável e direto ao ponto. A clareza que eu buscava.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=64" alt="Foto de M. Oliveira" class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">M. Oliveira</p><span class="text-black/60 dark:text-slate-400 text-sm">Pesquisador</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Trabalho jornalístico sério</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“A abordagem neutra e cultural é o grande diferencial. Referência!”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&h=120&fit=crop&q=80" alt="Foto de Gabriela D." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Gabriela D.</p><span class="text-black/60 dark:text-slate-400 text-sm">Música</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Contexto perfeito</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Explica com perfeição todo o contexto por trás da transformação.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop&q=80" alt="Foto de Michael Bastos" class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Michael Bastos</p><span class="text-black/60 dark:text-slate-400 text-sm">Estudante</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Fonte confiável</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Usei como fonte principal no meu TCC. Confiável e bem completo.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-          <figure class="reveal rounded-3xl border dark:border-slate-700 p-6"><div class="flex items-start gap-3"><img src="https://i.pravatar.cc/120?img=68" alt="Foto de Roberto F." class="w-12 h-12 rounded-full object-cover" /><div><p class="font-extrabold dark:text-white">Roberto F.</p><span class="text-black/60 dark:text-slate-400 text-sm">Jornalista</span></div></div><div class="mt-4"><span class="inline-flex px-3 py-1 rounded-full bg-black dark:bg-slate-600 text-white text-sm">Explicação clara</span></div><blockquote class="mt-3 text-black/75 dark:text-slate-300">“Após tantas matérias, enfim uma explicação clara e muito completa.”</blockquote><div class="mt-4 flex gap-1 text-amber-500" aria-label="5 estrelas">★★★★★</div></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seção de Oferta -->
-    <section id="oferta" class="py-16 md:py-20 bg-[#0E0E10] text-white">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-3xl sm:text-4xl font-black">Sua jornada começa agora</h2>
-          <p class="text-white/80 mt-2">Transforme curiosidade em conhecimento definitivo — com garantia.</p>
-        </div>
-        <div class="mt-10 relative max-w-4xl mx-auto">
-          <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0E0E10]"></div>
-          <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#0E0E10]"></div>
-          <div class="rounded-3xl border border-white/15 bg-white/5 p-6 sm:p-8">
-            <div class="grid lg:grid-cols-2 gap-8 items-start">
-              <div>
-                <p class="text-white/70 line-through">De R$79,90</p>
-                <p class="text-5xl font-black text-emerald-300 mt-1" data-js="price-number">R$39,90</p>
-                <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-300/40 bg-emerald-300/10 text-emerald-100 font-semibold">Oferta limitada</div>
-                <ul class="mt-5 space-y-2 text-white/90">
-                  <li class="flex items-start gap-3"><span class="w-5 h-5 text-emerald-300 pt-1 flex-shrink-0">✓</span> Acesso imediato por e-mail</li>
-                  <li class="flex items-start gap-3"><span class="w-5 h-5 text-emerald-300 pt-1 flex-shrink-0">✓</span> PDF premium (30+ páginas)</li>
-                  <li class="flex items-start gap-3"><span class="w-5 h-5 text-emerald-300 pt-1 flex-shrink-0">✓</span> Garantia de 7 dias</li>
-                </ul>
-              </div>
-              <div class="flex flex-col gap-4">
-                <a class="inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-emerald-600 text-white hover:bg-emerald-500 w-full" data-js="checkout-cta">Comprar agora</a>
-                <div class="flex items-center justify-center gap-3 bg-white/10 p-2 rounded-xl">
-                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/1280px-Visa_Inc._logo.svg.png" alt="Logo Visa" class="max-h-full max-w-full object-contain" /></div>
-                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://brand.mastercard.com/content/dam/mccom/brandcenter/thumbnails/mastercard_hrz_pos_300px_2x.png" alt="Logo Mastercard" class="max-h-full max-w-full object-contain" /></div>
-                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://nac.cni.com.br/blog/wp-content/uploads/2021/04/pix-1.jpeg" alt="Logo Pix" class="max-h-full max-w-full object-contain rounded-sm" /></div>
-                  <div class="h-8 w-14 bg-white rounded-md flex items-center justify-center p-1"><img src="https://logodownload.org/wp-content/uploads/2019/09/boleto-logo.png" alt="Logo Boleto" class="max-h-full max-w-full object-contain" /></div>
-                </div>
-                <div class="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-4 text-emerald-100"><div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 mt-0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="1.5" fill="none"/></svg><div><p class="font-bold">Garantia de Satisfação</p><p class="text-emerald-100/90 text-sm">7 dias para testar. Reembolso total se não curtir.</p></div></div></div>
-              </div>
-            </div>
-            <div class="mt-6 grid md:grid-cols-2 gap-4 items-center">
-              <div class="rounded-2xl border border-white/15 bg-white/5 p-4 text-center"><p class="text-white/80 text-sm">Tempo restante nesta janela de 24h</p><p class="mt-1 text-3xl font-black tracking-widest"><span id="hh">00</span>:<span id="mm">00</span>:<span id="ss">00</span></p><div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden"><div id="bar-time" class="h-full bg-emerald-300"></div></div></div>
-              <div class="rounded-2xl border border-white/15 bg-white/5 p-4 text-center" aria-live="polite"><p class="text-white/80 text-sm">Vendas nas últimas 24h</p><p class="mt-1 text-3xl font-black"><span id="sales">0</span> <span class="text-white/60 text-base font-semibold">de <span id="target">0</span></span></p><div class="mt-3 h-2 rounded-full bg-white/10 overflow-hidden"><div id="bar-sales" class="h-full bg-emerald-300"></div></div></div>
-            </div>
+  <!-- ===================== BARRA STICKY ===================== -->
+  <div id="sticky" aria-hidden="true" class="fixed bottom-4 left-0 right-0 z-40 hidden">
+    <div class="mx-auto max-w-3xl px-4">
+      <div class="rounded-2xl bg-white p-3 shadow-xl ring-1 ring-black/5 dark:bg-slate-900">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="text-sm">
+            <strong class="font-bold">Oferta ativa</strong>
+            <span class="ml-2">Termina em <span id="hh">00</span>:<span id="mm">00</span>:<span id="ss">00</span></span>
           </div>
+          <a class="rounded-xl bg-emerald-600 px-4 py-2 font-semibold text-white hover:bg-emerald-700" data-js="checkout-cta" target="_blank" rel="noopener">
+            <span data-js="price-inline">Comprar</span>
+          </a>
         </div>
       </div>
-    </section>
-
-    <!-- NOVA SEÇÃO: Blog -->
-    <section id="blog" class="py-16 md:py-20 bg-slate-50 dark:bg-slate-950">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-3xl mx-auto reveal">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">Nosso Blog</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">Artigos & Análises</h2>
-          <p class="mt-3 text-black/70 dark:text-slate-400 max-w-prose mx-auto">Aprofunde-se em temas relacionados com nossos artigos exclusivos no Medium.</p>
-        </div>
-        <!-- O container dos artigos será preenchido pelo JavaScript -->
-        <div id="blog-articles-container" class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Os cards dos artigos serão inseridos aqui -->
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center max-w-3xl mx-auto">
-          <p class="uppercase tracking-[.14em] text-xs text-black/60 dark:text-white/60 font-semibold">dúvidas frequentes</p>
-          <h2 class="text-3xl sm:text-5xl font-black dark:text-white">FAQ — antes de comprar</h2>
-        </div>
-        <div class="mt-10 grid lg:grid-cols-2 gap-4">
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Vale se eu já li o livro?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Sim. O eBook organiza a cronologia, traduz termos e conecta a história com a discografia, evitando a linguagem repetitiva do original.</p></details>
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Quanto tempo levo para ler?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Em torno de 60–90 minutos na primeira leitura.</p></details>
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>É religioso?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Não. A abordagem é histórica e cultural, sem proselitismo.</p></details>
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Funciona no celular?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Sim. PDF legível em telas pequenas; link para leitura no navegador.</p></details>
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Posso pedir reembolso?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">7 dias de garantia de satisfação — reembolso total.</p></details>
-          <details class="rounded-2xl border dark:border-slate-700 p-4 group open:bg-black/5 dark:open:bg-white/5"><summary class="cursor-pointer list-none font-semibold flex items-center justify-between gap-3"><span>Recebo na hora?</span><b class="text-sm text-black/50 dark:text-white/50 group-open:rotate-90 transition-transform origin-center">›</b></summary><p class="mt-2 text-black/70 dark:text-slate-400">Sim. Acesso imediato via e-mail após confirmação.</p></details>
-        </div>
-        <div class="text-center mt-8">
-          <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition duration-200 ease-in-out transform hover:scale-105 active:scale-95 px-6 py-3.5 text-lg bg-black dark:bg-slate-200 text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white" data-js="price-cta">Comprar agora</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-  <!-- Modal de Políticas -->
-  <div id="policy-modal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col transform transition-transform duration-300 scale-95">
-          <header class="p-4 border-b dark:border-slate-700 flex items-center justify-between flex-shrink-0">
-              <h3 id="modal-title" class="text-lg font-bold"></h3>
-              <button id="modal-close-btn" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10" aria-label="Fechar">
-                  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="stroke-current"><path d="M6 6l12 12M6 18L18 6" stroke-width="2" stroke-linecap="round"/></svg>
-              </button>
-          </header>
-          <main id="modal-content" class="p-6 overflow-y-auto">
-              <!-- Conteúdo será inserido via JS -->
-          </main>
-      </div>
+    </div>
   </div>
 
-  <footer class="bg-[#FAF8F5] dark:bg-slate-950 border-t border-black/5 dark:border-white/5 pt-10">
-      <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-8">
-        <div>
-            <a href="#inicio" class="flex items-center gap-3" aria-label="Início">
-                <!-- LOGO ANTERIOR SVG -->
-                <div class="w-8 h-8">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="logoGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#10b981;" />
-                        <stop offset="100%" style="stop-color:#059669;" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="100" height="100" rx="20" fill="url(#logoGradFooter)" />
-                    <text x="50" y="65" font-family="Inter, sans-serif" font-size="50" fill="white" text-anchor="middle" font-weight="800">TM</text>
-                  </svg>
-                </div>
-                <span class="text-lg leading-none">
-                  <b class="font-black tracking-tight dark:text-white">Tim Maia</b>
-                  <i class="block font-semibold text-slate-500 dark:text-slate-400 not-italic">Místico</i>
-                </span>
-            </a>
-            <ul class="text-sm text-black/70 dark:text-slate-400 mt-4 space-y-2">
-                <li>Site protegido por SSL • Pagamento seguro</li>
-                <li><a href="#" data-policy="terms" class="underline hover:text-emerald-600">Termos de Uso</a> • <a href="#" data-policy="privacy" class="underline hover:text-emerald-600">Política de Privacidade</a></li>
-            </ul>
+  <!-- ===================== CONTEÚDO ===================== -->
+  <section id="conteudo" class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="font-extrabold text-2xl">O que você vai encontrar</h2>
+          <ul class="mt-3 list-disc pl-5 text-black/70 dark:text-slate-400">
+            <li>Leitura guiada da Cultura Racional</li>
+            <li>Análises musicais e contexto histórico</li>
+            <li>Curadoria do melhor da fase mística</li>
+          </ul>
         </div>
-        <nav class="space-y-2 md:justify-self-end">
-            <a href="#prova" class="block hover:underline">Depoimentos</a>
-            <a href="#valor" class="block hover:underline">O que você leva</a>
-            <a href="#oferta" class="block hover:underline">Comprar</a>
-        </nav>
+        <div class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="font-extrabold text-2xl">Para quem é</h2>
+          <ul class="mt-3 list-disc pl-5 text-black/70 dark:text-slate-400">
+            <li>Fãs do Tim Maia em busca de profundidade</li>
+            <li>Pesquisadores e comunicadores</li>
+            <li>Curiosos por misticismo pop</li>
+          </ul>
+        </div>
       </div>
-      <p class="text-center text-black/60 dark:text-slate-400 py-8 text-sm">© <span id="year"></span> Tim Maia Místico. Todos os direitos reservados.</p>
+    </div>
+  </section>
+
+  <!-- ===================== OFERTA ===================== -->
+  <section id="oferta" class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid items-center gap-8 md:grid-cols-2">
+        <div class="reveal">
+          <h2 class="font-extrabold text-3xl">Oferta por tempo limitado</h2>
+          <p class="mt-2 text-black/70 dark:text-slate-400">
+            Lote promocional com garantia incondicional de 7 dias.
+          </p>
+
+          <div class="mt-6 flex items-baseline gap-3">
+            <div class="text-4xl font-extrabold" data-js="price-number">R$39,90</div>
+            <div class="text-sm text-black/60 dark:text-slate-400">à vista</div>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <a class="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-700" data-js="checkout-cta" target="_blank" rel="noopener">
+              <span data-js="price-cta">Comprar agora</span>
+            </a>
+            <a href="#faq" class="rounded-xl border px-6 py-3 font-semibold hover:bg-emerald-50 dark:hover:bg-slate-800">Dúvidas</a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm text-black/60 dark:text-slate-400">Meta</div>
+                <div class="text-2xl font-extrabold"><span id="sales">0</span>/<span id="target">175</span> vendas</div>
+              </div>
+              <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">24h</span>
+            </div>
+            <div class="mt-4 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-800">
+              <div id="bar-sales" class="h-2 rounded-full bg-emerald-500" style="width:0%"></div>
+            </div>
+            <div class="mt-3 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-800">
+              <div id="bar-time" class="h-2 rounded-full bg-slate-700 dark:bg-slate-500" style="width:100%"></div>
+            </div>
+            <p class="mt-3 text-sm text-black/60 dark:text-slate-400">Contagem regressiva e barra de progresso reiniciam a cada 24 horas no navegador.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BÔNUS ===================== -->
+  <section id="bonus" class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="font-extrabold text-2xl">Bônus exclusivo</h2>
+          <p class="mt-2 text-black/70 dark:text-slate-400">
+            Receba um mini-ebook com a linha do tempo da fase Racional.
+          </p>
+
+          <form id="bonus-form" class="mt-4 space-y-3">
+            <input id="bonus-name" type="text" class="w-full rounded-xl border px-4 py-3 dark:border-slate-700 dark:bg-slate-800" placeholder="Seu nome" />
+            <input id="bonus-email" type="email" class="w-full rounded-xl border px-4 py-3 dark:border-slate-700 dark:bg-slate-800" placeholder="Seu e-mail" />
+            <button type="submit" class="w-full rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-700">Quero receber</button>
+            <p id="bonus-feedback" class="text-sm"></p>
+          </form>
+        </div>
+
+        <div class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="font-extrabold text-2xl">No Medium</h2>
+          <div id="blog-articles-container" class="mt-4 grid gap-4 sm:grid-cols-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq" class="py-20">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="reveal font-extrabold text-3xl">Perguntas frequentes</h2>
+      <div class="mt-6 grid gap-4">
+        <details class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="cursor-pointer font-semibold">Como recebo o guia?</summary>
+          <p class="mt-2 text-black/70 dark:text-slate-400">Você recebe por e-mail um link para baixar o PDF imediatamente após a compra.</p>
+        </details>
+        <details class="reveal rounded-2xl border bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <summary class="cursor-pointer font-semibold">Tem garantia?</summary>
+          <p class="mt-2 text-black/70 dark:text-slate-400">Sim. Garantia incondicional de 7 dias.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODAL POLÍTICAS ===================== -->
+  <div id="policy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4 opacity-0 transition-opacity">
+    <div class="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl transition-transform dark:bg-slate-900">
+      <div class="flex items-center justify-between">
+        <h3 id="modal-title" class="text-xl font-extrabold">Política</h3>
+        <button id="modal-close-btn" class="rounded-lg border px-2 py-1 text-sm">Fechar</button>
+      </div>
+      <div id="modal-content" class="mt-4 space-y-3 text-black/70 dark:text-slate-400"></div>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t py-10">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+        <p class="text-sm text-black/60 dark:text-slate-400">&copy; <span id="year"></span> Tim Maia Místico. Todos os direitos reservados.</p>
+        <div class="flex gap-4 text-sm">
+          <a href="#" data-policy="terms" class="hover:text-emerald-600 dark:hover:text-emerald-400">Termos de Uso</a>
+          <a href="#" data-policy="privacy" class="hover:text-emerald-600 dark:hover:text-emerald-400">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <!-- CTA Flutuante (mobile) -->
-  <div id="sticky" class="fixed bottom-3 inset-x-4 z-50 hidden">
-      <div class="rounded-2xl bg-black dark:bg-slate-800 text-white border border-white/10 shadow-2xl p-3 flex items-center justify-between gap-3">
-        <div class="text-sm leading-tight">
-          <b class="font-semibold">Tim Maia Místico</b>
-          <div class="text-white/80">Acesso hoje por <span data-js="price-inline">R$39,90</span></div>
-        </div>
-        <a href="https://pay.hotmart.com/J101435163B" class="hotmart-fb inline-flex items-center justify-center rounded-full font-semibold transition px-3 py-2 text-sm bg-emerald-600 text-white hover:bg-emerald-500" data-js="checkout-cta">Comprar</a>
-      </div>
-  </div>
-
-  <!-- OTIMIZAÇÃO: Adicionado 'async' e 'defer' aos scripts para não bloquear o carregamento da página -->
-  <script type="text/javascript" async defer>
-    function importHotmart(){ 
-      var imported = document.createElement('script'); 
-      imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
-      document.head.appendChild(imported); 
-      var link = document.createElement('link'); 
-      link.rel = 'stylesheet'; 
-      link.type = 'text/css'; 
-      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
-      document.head.appendChild(link);
-    } 
-    importHotmart(); 
-  </script>
-
-  <!-- Scripts da Página -->
-  <script async defer>
-    /* ===== CONFIGURAÇÕES GLOBAIS ===== */
-    const CHECKOUT_URL = "https://pay.hotmart.com/J101435163B";
-    const PRICE_LABEL = "R$39,90";
-
-    /* ===== FUNÇÃO HELPER (Query Selector) ===== */
-    const $ = (sel, root = document) => root.querySelector(sel);
-    
-    /* ===== LÓGICA DA PÁGINA ===== */
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // HEADER: Lógica de elevação e menu mobile (drawer)
-      (function headerInit() {
-        const header = $('#site-header');
-        if (!header) return;
-        const onScroll = () => header.classList.toggle('elev', window.scrollY > 8);
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        const drawer = $('#drawer');
-        const btnOpen = $('#btn-open');
-        const btnClose = $('#btn-close');
-        if (!drawer || !btnOpen || !btnClose) return;
-
-        const open = () => { drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); };
-        const close = () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); };
-
-        btnOpen.addEventListener('click', open);
-        btnClose.addEventListener('click', close);
-        drawer.addEventListener('click', (e) => { if (e.target.id === 'drawer') close(); });
-        document.querySelectorAll('#drawer .drawer__link').forEach(a => a.addEventListener('click', close));
-      })();
-
-      // PREÇO & CHECKOUT: Atualiza os elementos de preço dinamicamente
-      (function pricing() {
-        document.querySelectorAll('[data-js="price-number"], [data-js="price-inline"], [data-js="price-cta"]').forEach(el => {
-          if (el.dataset.js === 'price-cta') {
-            el.textContent = `Comprar agora — ${PRICE_LABEL}`;
-          } else {
-            el.textContent = PRICE_LABEL;
-          }
-        });
-        document.querySelectorAll('[data-js="checkout-cta"]').forEach(el => {
-          el.setAttribute('href', CHECKOUT_URL);
-        });
-      })();
-
-      // URGÊNCIA: Timer de 24h e contador de vendas
-      (function rolling24h(){
-        const key = 'tm24';
-        const now = Date.now();
-        let start = Number(localStorage.getItem(`${key}_start`));
-
-        // Reinicia o contador se já passaram 24h
-        const valid = start && (now - start) < 24 * 3600 * 1000;
-        if (!valid){
-          start = Date.now();
-          localStorage.setItem(`${key}_start`, String(start));
-        }
-
-        const end = start + 24 * 3600 * 1000;
-        const hhEl = $('#hh'), mmEl = $('#mm'), ssEl = $('#ss');
-        const salesEl = $('#sales'), targetEl = $('#target');
-        const barTime = $('#bar-time'), barSales = $('#bar-sales');
-        
-        const totalTarget = 175;
-        if(targetEl) targetEl.textContent = totalTarget;
-
-        function tick(){
-          const now = Date.now();
-          const remaining = Math.max(0, end - now);
-          const elapsed = Math.max(0, Math.min(1, (now - start) / (24 * 3600 * 1000)));
-
-          const h = String(Math.floor(remaining / 3600000)).padStart(2,'0');
-          const m = String(Math.floor((remaining % 3600000) / 60000)).padStart(2,'0');
-          const s = String(Math.floor((remaining % 60000) / 1000)).padStart(2,'0');
-
-          if (hhEl) hhEl.textContent = h;
-          if (mmEl) mmEl.textContent = m;
-          if (ssEl) ssEl.textContent = s;
-
-          const baseSales = 35;
-          const dynamicSales = Math.floor((totalTarget - baseSales) * elapsed);
-          const currentSales = baseSales + dynamicSales;
-          
-          if (salesEl) salesEl.textContent = currentSales;
-          if (barSales) barSales.style.width = `${(currentSales / totalTarget) * 100}%`;
-          if (barTime) barTime.style.width = `${(1 - elapsed) * 100}%`;
-        }
-
-        tick();
-        setInterval(tick, 1000);
-      })();
-      
-      // CTA FLUTUANTE: Lógica de exibição no scroll
-      (function stickyCTA() {
-        const sticky = $('#sticky');
-        const hero = $('#inicio');
-        const oferta = $('#oferta');
-        if (!sticky || !hero) return;
-
-        function onScroll() {
-          const heroH = hero.offsetHeight;
-          const threshold = heroH * 0.6;
-          const ofertaTop = oferta ? (oferta.getBoundingClientRect().top + window.scrollY) : Infinity;
-          const winBottom = window.scrollY + window.innerHeight;
-          const nearOffer = (winBottom + 120) > ofertaTop;
-          
-          const show = window.scrollY > threshold && !nearOffer;
-          sticky.classList.toggle('show', show);
-          sticky.setAttribute('aria-hidden', String(!show));
-        }
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-      })();
-
-      // RODAPÉ: Atualiza o ano automaticamente
-      (function year() {
-        const el = $('#year');
-        if (el) el.textContent = new Date().getFullYear();
-      })();
-
-      // SELETOR DE TEMA: Lógica para dark/light mode
-      (function themeToggle() {
-        const toggleButton = $('#theme-toggle');
-        if(!toggleButton) return;
-
-        toggleButton.addEventListener('click', () => {
-          const isDark = document.documentElement.classList.toggle('dark');
-          localStorage.theme = isDark ? 'dark' : 'light';
-        });
-      })();
-
-      // ANIMAÇÃO DE SCROLL: Revela elementos ao entrarem na tela
-      const scrollRevealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      function initScrollReveal(selector = '.reveal') {
-        document.querySelectorAll(selector).forEach(el => {
-          scrollRevealObserver.observe(el);
-        });
-      }
-
-      // ===================================================================
-      // ARTIGOS DO BLOG - EDITE A LISTA ABAIXO PARA ATUALIZAR O SITE
-      // ===================================================================
-      const articles = [
-        {
-          url: 'https://medium.com/',
-          imageUrl: 'https://images.unsplash.com/photo-1587223383391-2a161f54b8d0?q=80&w=870&auto=format&fit=crop',
-          title: 'As Influências do Soul na Fase Racional',
-          subtitle: 'Uma análise musical que vai além do óbvio, explorando os arranjos de metais e as linhas de baixo que definiram o som de Tim Maia nos anos 70.'
-        },
-        {
-          url: 'https://medium.com/',
-          imageUrl: 'https://images.unsplash.com/photo-1518600576225-c1d028a4e627?q=80&w=870&auto=format&fit=crop',
-          title: '"Universo em Desencanto": Um Guia para Iniciantes',
-          subtitle: 'Desmistificamos os principais conceitos da Cultura Racional de forma simples, para que você possa entender as letras de Tim Maia sem precisar ler os mil volumes.'
-        },
-        {
-          url: 'https://medium.com/',
-          imageUrl: 'https://images.unsplash.com/photo-1504321925958-b0a4f5b51a23?q=80&w=774&auto=format&fit=crop',
-          title: 'O Legado Pós-Racional: Como a Fase Mística Influenciou o Resto da Carreira',
-          subtitle: 'Analisamos como a experiência com a Cultura Racional, mesmo após o rompimento, ecoou nas composições e no comportamento de Tim Maia até o fim de sua vida.'
-        },
-        {
-          url: 'https://medium.com/',
-          imageUrl: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=870&auto=format&fit=crop',
-          title: 'A Relação de Tim Maia com Outros Artistas',
-          subtitle: 'Explore as parcerias, amizades e rivalidades que marcaram a carreira do Síndico durante e após sua fase mais mística e controversa.'
-        }
-      ];
-
-      (function renderBlogArticles() {
-        const container = $('#blog-articles-container');
-        if (!container) return;
-
-        let articlesHTML = '';
-        articles.forEach(article => {
-          // Codifica o título para usar na URL do placeholder
-          const encodedTitle = encodeURIComponent(article.title);
-          const placeholderUrl = `https://placehold.co/870x480/059669/FFFFFF?text=${encodedTitle}`;
-          
-          articlesHTML += `
-            <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="group block">
-              <div class="reveal rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm transition duration-300 hover:shadow-lg hover:-translate-y-1 h-full flex flex-col">
-                <img 
-                  src="${article.imageUrl}" 
-                  alt="Imagem de capa para o artigo: ${article.title}" 
-                  class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                  onerror="this.onerror=null;this.src='${placeholderUrl}';"
-                >
-                <div class="p-6 flex flex-col flex-grow">
-                  <h3 class="font-extrabold text-xl dark:text-white">${article.title}</h3>
-                  <p class="mt-2 text-black/70 dark:text-slate-400 text-sm flex-grow">${article.subtitle}</p>
-                  <div class="mt-4 font-semibold text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-2 self-start">
-                    Leia no Medium
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </div>
-                </div>
-              </div>
-            </a>
-          `;
-        });
-
-        container.innerHTML = articlesHTML;
-        // Re-inicializa o observer para os novos elementos
-        initScrollReveal('#blog-articles-container .reveal');
-      })();
-
-      // LÓGICA DO MODAL DE POLÍTICAS
-      (function policyModal() {
-        const modal = $('#policy-modal');
-        if (!modal) return;
-
-        const modalContainer = modal.querySelector('div');
-        const closeBtn = $('#modal-close-btn');
-        const modalTitle = $('#modal-title');
-        const modalContent = $('#modal-content');
-        const links = document.querySelectorAll('[data-policy]');
-
-        const policies = {
-            terms: {
-                title: 'Termos de Uso',
-                content: `
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">1. Aceitação dos Termos</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">Ao adquirir e utilizar o eBook "Tim Maia Místico", você concorda em cumprir estes Termos de Uso. Se você não concordar com qualquer parte dos termos, não tem permissão para usar o eBook.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">2. Licença de Uso</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">Concedemos a você uma licença limitada, não exclusiva e intransferível para baixar, instalar e usar o eBook para seu uso pessoal e não comercial.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">3. Restrições</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">É estritamente proibido: a) compartilhar, revender ou distribuir o eBook; b) modificar, traduzir ou criar trabalhos derivados baseados no eBook; c) remover quaisquer avisos de propriedade ou etiquetas do eBook.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">4. Propriedade Intelectual</h4>
-                    <p class="text-slate-600 dark:text-slate-400">Todo o conteúdo do eBook, incluindo textos, gráficos e layout, é de nossa propriedade exclusiva e protegido por leis de direitos autorais.</p>
-                `
-            },
-            privacy: {
-                title: 'Política de Privacidade',
-                content: `
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">1. Coleta de Dados</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">Coletamos informações pessoais, como nome e e-mail, durante o processo de compra através da plataforma Hotmart, que possui sua própria política de privacidade. Não armazenamos dados de pagamento.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">2. Uso de Dados</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">Utilizamos seu e-mail para enviar o eBook adquirido e para comunicações ocasionais sobre atualizações ou produtos relacionados. Você pode optar por não receber essas comunicações a qualquer momento.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">3. Cookies e localStorage</h4>
-                    <p class="mb-4 text-slate-600 dark:text-slate-400">Nosso site utiliza o localStorage do navegador para salvar suas preferências de tema (claro/escuro) e para gerenciar o contador de ofertas. Esses dados são armazenados localmente no seu dispositivo e não são usados para rastreamento.</p>
-                    <h4 class="font-bold mb-2 text-slate-800 dark:text-slate-200">4. Compartilhamento de Dados</h4>
-                    <p class="text-slate-600 dark:text-slate-400">Não compartilhamos suas informações pessoais com terceiros, exceto quando exigido por lei.</p>
-                `
-            }
-        };
-
-        const openModal = (type) => {
-            const policy = policies[type];
-            if (!policy) return;
-
-            modalTitle.textContent = policy.title;
-            modalContent.innerHTML = policy.content;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.classList.add('modal-open');
-            // Força um reflow para a animação funcionar
-            setTimeout(() => {
-              modal.classList.remove('opacity-0');
-              modalContainer.classList.remove('scale-95');
-            }, 10);
-        };
-
-        const closeModal = () => {
-            modal.classList.add('opacity-0');
-            modalContainer.classList.add('scale-95');
-            setTimeout(() => {
-              modal.classList.add('hidden');
-              modal.classList.remove('flex');
-              document.body.classList.remove('modal-open');
-            }, 300); // Duração da transição
-        };
-
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const policyType = e.target.dataset.policy;
-                openModal(policyType);
-            });
-        });
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === "Escape" && !modal.classList.contains('hidden')) {
-            closeModal();
-          }
-        });
-      })();
-
-      // LÓGICA DO FORMULÁRIO DE BÔNUS
-      (function bonusFormHandler() {
-          const form = $('#bonus-form');
-          if (!form) return;
-
-          const feedbackEl = $('#bonus-feedback');
-          const submitBtn = form.querySelector('button[type="submit"]');
-
-          form.addEventListener('submit', (e) => {
-              e.preventDefault();
-              const name = $('#bonus-name').value;
-              const email = $('#bonus-email').value;
-
-              if (!name || !email) {
-                  feedbackEl.textContent = 'Por favor, preencha todos os campos.';
-                  feedbackEl.classList.add('text-red-500');
-                  return;
-              }
-
-              // Simples validação de e-mail
-              if (!/^\S+@\S+\.\S+$/.test(email)) {
-                  feedbackEl.textContent = 'Por favor, insira um e-mail válido.';
-                  feedbackEl.classList.add('text-red-500');
-                  return;
-              }
-
-              feedbackEl.textContent = `Obrigado, ${name}! Seu bônus será enviado para ${email} em breve.`;
-              feedbackEl.classList.remove('text-red-500');
-              feedbackEl.classList.add('text-emerald-600', 'dark:text-emerald-400');
-              
-              submitBtn.disabled = true;
-              submitBtn.textContent = 'Enviado!';
-              submitBtn.classList.add('bg-gray-500', 'hover:bg-gray-500');
-              form.reset();
-          });
-      })();
-
-      // Inicializa o scroll reveal para os elementos estáticos da página
-      initScrollReveal();
-    });
-  </script>
+  <!-- JS da página -->
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
