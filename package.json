@@ -1,0 +1,10 @@
+{
+  "name": "timmaiamistico",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/tailwind.input.css -o ./assets/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.10"
+  }
+}
