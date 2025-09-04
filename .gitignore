@@ -1,0 +1,15 @@
+# dependências / cache
+node_modules/
+.npm/
+npm-debug.log*
+yarn.lock
+.pnpm-store/
+
+# SO/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# build local (não precisamos)
+dist/
