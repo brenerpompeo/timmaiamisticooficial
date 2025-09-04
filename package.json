@@ -2,7 +2,7 @@
   "name": "timmaiamistico",
   "private": true,
   "scripts": {
-    "build:css": "npx tailwindcss -i ./assets/tailwind.input.css -o ./assets/styles.css --minify"
+    "build:css": "tailwindcss -i ./assets/tailwind.input.css -o ./assets/styles.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "3.4.10"
