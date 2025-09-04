@@ -23,11 +23,17 @@ jobs:
 
       - name: Commit built assets (styles.css + lockfile)
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add assets/styles.css
-            if [ -f package-lock.json ]; then git add package-lock.json; fi
-            git commit -m "build: update compiled Tailwind CSS"
-            git push
+          # força adicionar apenas o que nos interessa
+          git add -f assets/styles.css
+          if [ -f package-lock.json ]; then git add package-lock.json; fi
+
+          # se nada estiver staged, sai com sucesso
+          if git diff --cached --quiet; then
+            echo "No changes to commit (styles.css/lockfile unchanged)."
+            exit 0
           fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "build: update compiled Tailwind CSS"
+          git push
